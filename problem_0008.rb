@@ -1,3 +1,5 @@
+require './digits'
+
 string = "
     73167176531330624919225119674426574742355349194934
     96983520312774506326239578318016984801869478851843
@@ -19,18 +21,11 @@ string = "
     84580156166097919133875499200524063689912560717606
     05886116467109405077541002256983155200055935729725
     71636269561882670428252483600823257530420752963450
-".gsub(/\n| /, '')
-
-def digits(num)
-    digits = []
-    while num > 0 do
-        digits << num % 10
-        num /= 10
-    end
-    return digits.reverse
-end
+".gsub(/\s+/, '')
 
 maximum = (0 .. (string.size - 5)).map do |start|
-    digits(string[start .. (start + 4)].to_i).inject(&:*)
+    string[start .. (start + 4)].to_i.digits.inject(&:*)
 end.max
-print maximum
+
+puts maximum
+
