@@ -1,4 +1,5 @@
 require './digits'
+require './each_interpolated_slice'
 
 string = "
     73167176531330624919225119674426574742355349194934
@@ -23,9 +24,7 @@ string = "
     71636269561882670428252483600823257530420752963450
 ".gsub(/\s+/, '')
 
-maximum = (0 .. (string.size - 5)).map do |start|
-    string[start .. (start + 4)].to_i.digits.inject(&:*)
-end.max
-
-puts maximum
+puts maximum = string.each_interpolated_slice(5).map { |substring|
+    substring.to_i.digits.inject(&:*)
+}.max
 

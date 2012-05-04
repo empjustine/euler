@@ -1,3 +1,4 @@
 require './prime'
 
-puts Prime.upto(2_000_000).inject(&:+)
+num = Prime.upto(2000000).inject(&:+)
+puts num

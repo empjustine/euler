@@ -1,7 +1,7 @@
 class FiniteArithmeticProgression
-    
+
     attr_accessor :begin, :end, :step
-    
+
     def self.begin_end_step(_begin, _end, _step)
 
         ap = FiniteArithmeticProgression.new
@@ -20,4 +20,3 @@ class FiniteArithmeticProgression
         return gauss_summation = (floor + ceiling) * count / 2
     end
 end
-

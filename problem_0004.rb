@@ -13,10 +13,7 @@ def reverse_uniq_top_product_iterator(min, max)
     end
 end
 
-reverse_uniq_top_product_iterator(0, 999) { |x, y|
+puts reverse_uniq_top_product_iterator(0, 999) { |x, y|
     original = (x * y).to_s
-    if original == original.reverse
-        puts x, y
-        break
-    end
+    break (x * y) if original == original.reverse
 }
