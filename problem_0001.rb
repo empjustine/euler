@@ -1,10 +1,9 @@
-require './finite_arithmetic_progression'
+require './multiples'
 
-puts [
-    [[0, 999,  3], [0, 999,  5]],
-    [[0, 999, 15]],
-].map { |rangesets|
-    rangesets.map { |ranges|
-        FiniteArithmeticProgression.begin_end_step(*ranges).summation_of_multiples
-    }.inject(&:+)
-}.inject(&:-)
+puts(
+    [[3, 5], [15]].map { |sets|
+        sets.map { |member|
+            (0...1000).multiples(member).summation
+        }.inject(&:+)
+    }.inject(&:-)
+)

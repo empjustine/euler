@@ -20,31 +20,26 @@ raw_grid = %w{
     20 73 35 29 78 31 90 01 74 31 49 71 48 86 81 16 23 57 05 54
     01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 }.each_slice(20).map { |line|
-    line.map { |num|
-        num.to_i
-    }
+    line.map(&:to_i)
 }.reverse
 
-height = 20
-width = 20
-
-num = width.times.map { |x|
-    height.times.map { |y|
-        (-1..1).map { |xdir|
-            (-1..1).map { |ydir|
-                xdir == 0 && ydir == 0 ? 0 : 4.times.map { |offset|
-                    x + (xdir * offset) > 0 &&
-                    x + (xdir * offset) < width &&
-                    y + (ydir * offset) > 0 &&
-                    y + (ydir * offset) < width ? raw_grid[
-                        x + (xdir * offset)
-                    ][
-                        y + (ydir * offset)
-                    ] : 0
-                }.inject(&:*)
+puts(
+    20.times.map { |x|
+        20.times.map { |y|
+            (-1..1).map { |xdir|
+                (-1..1).map { |ydir|
+                    xdir == 0 && ydir == 0 ? 0 : 4.times.map { |offset|
+                        x + (xdir * offset) > 0 &&
+                        x + (xdir * offset) < 20 &&
+                        y + (ydir * offset) > 0 &&
+                        y + (ydir * offset) < 20 ? raw_grid[
+                            x + (xdir * offset)
+                        ][
+                            y + (ydir * offset)
+                        ] : 0
+                    }.inject(&:*)
+                }
             }
         }
-    }
-}.flatten.max
-
-puts num
+    }.flatten.max
+)

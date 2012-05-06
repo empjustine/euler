@@ -24,7 +24,8 @@ string = "
     71636269561882670428252483600823257530420752963450
 ".gsub(/\s+/, '')
 
-puts maximum = string.each_interpolated_slice(5).map { |substring|
-    substring.to_i.digits.inject(&:*)
-}.max
-
+puts(
+    maximum = string.each_interpolated_slice(5).map { |substring|
+        substring.to_i.digits.inject(&:*)
+    }.max
+)

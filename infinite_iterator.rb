@@ -25,7 +25,7 @@ module InfiniteIterator
     def [](index)
 
         until @cache.size > index do
-            puts "."
+            print "c"
             _consequent
         end
 
@@ -40,7 +40,7 @@ module InfiniteIterator
     def upto(value)
 
         until @cache[-1] > value do
-            print "."
+            print "c"
             _consequent
         end
 
@@ -53,7 +53,7 @@ module InfiniteIterator
 
     def _each
         @cache.each { |cached|
-            ","
+            "."
             yield(cached)
         }
 
