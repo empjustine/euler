@@ -27,7 +27,6 @@ module IntegerExtensions
     end
 end
 
-
 class Integer
 
     include IntegerExtensions
